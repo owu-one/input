@@ -269,13 +269,13 @@ class Form extends BaseModel
 
     public function getInitialsAttribute()
     {
-        $strings = explode(' ', $this->name)[0];
+        $strings = mb_split(' ', $this->name);
 
         return implode(
             ' ',
             collect($strings)
                 ->take(2)
-                ->map(fn ($item) => substr($item, 0, 2))
+                ->map(fn ($item) => mb_substr($item, 0, 2))
                 ->toArray()
         );
     }
