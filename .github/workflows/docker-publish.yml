@@ -2,6 +2,10 @@ name: Docker
 
 on:
   workflow_call:
+  push:
+    branches: [ "main" ]
+    # Publish semver tags as releases.
+    tags: [ 'v*.*.*' ]
 
 env:
   REGISTRY: ghcr.io
